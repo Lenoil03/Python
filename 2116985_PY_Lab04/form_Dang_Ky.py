@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
+from openpyxl import *
 import re
 
 root = Tk()
@@ -142,9 +143,29 @@ def clicked():
     else:
         lbl.configure(text = "")
     saveToExcel()
-    
+
+wb = load_workbook('C:\\Users\anhtt\Downloads\Python\2116985_PY_Lab04\Danh sach dang ky.xlsx')
+sheet = wb.active   
+
 def saveToExcel():
     pass
+
+def excel():
+    sheet.column_dimensions['A'].width = 30
+    sheet.column_dimensions['B'].width = 10
+    sheet.column_dimensions['C'].width = 10
+    sheet.column_dimensions['D'].width = 20
+    sheet.column_dimensions['E'].width = 20
+    sheet.column_dimensions['F'].width = 40
+    sheet.column_dimensions['G'].width = 50
+
+    sheet.cell(row=1, column=1).value = "Mã số sinh viên"
+    sheet.cell(row=1, column=2).value = "Họ tên"
+    sheet.cell(row=1, column=3).value = "Ngày sinh"
+    sheet.cell(row=1, column=4).value = "Email"
+    sheet.cell(row=1, column=5).value = "Số điện thoại"
+    sheet.cell(row=1, column=6).value = "Học kỳ"
+    sheet.cell(row=1, column=7).value = "Môn"
 
 lbl = Label(root, text = "", bg = 'light green', fg = 'red', padx = 3, pady = 3)
 lbl.config(font = ("Helvaetica bold", 10))
